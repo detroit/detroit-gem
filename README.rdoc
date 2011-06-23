@@ -1,0 +1,21 @@
+= Detroit RubyGems Tool
+
+
+== DESCRIPTION
+
+Create `.gem` package for your Ruby project.
+
+
+== INSTALL
+
+  $ gem install detroit-rubygems
+
+
+== COPYRIGHTS
+
+Copyright (c) 2011 Thomas Sawyer
+
+Detroit RubyGems is licensed via the terms of the GPL v3.
+
+See GPL3.txt file for details.
+
