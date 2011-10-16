@@ -18,11 +18,53 @@ module Detroit
     # Location of packages. This defaults to Project#pkg.
     attr_accessor :pkgdir
 
+    # Whether to install the gem.
+    attr_writer :install
+
+    # Whether to install the gem (default `false`).
+    def install?
+      @install
+    end
+
+    # What rvm gemset to install in if installing.
+    #attr_accessor :gemset
+
     # Version to release. Defaults to current version.
     attr :version
 
     # Additional options to pass to gem command.
     #attr :options
+
+
+    #  A S S E M B L Y  S T A T I O N S
+
+    # Attach package method to package assembly station.
+    def station_package
+      package
+    end
+
+    # Attach install method to install assembly station.
+    def station_install
+      install
+    end
+
+    # Attach release method to release assembly station.
+    def station_release
+      release
+    end
+
+    # Attach reset method to reset assembly station.
+    def station_reset
+      rest
+    end
+
+    # Attach purge method to purge assembly station.
+    def station_purge
+      purge
+    end
+
+
+    #  S E R V I C E  M E T H O D S
 
     # Write gemspec if +autospec+ is +true+ and then build the gem.
     def package
@@ -48,6 +90,14 @@ module Detroit
     def spec(file=nil)
       create_gemspec(file)
     end
+
+    #
+    def install
+      return unless install?
+      package_files.each do |file|
+        sh "gem install --no-rdoc --no-ri #{file}"
+      end
+    end   
 
     # Push gem package to RubyGems.org (a la Gemcutter).
     #--
