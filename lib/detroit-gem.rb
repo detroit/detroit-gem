@@ -1,3 +1,5 @@
+require 'detroit/tool'
+
 module Detroit
 
   # Create new Gem tool with the specified +options+.
