@@ -1,30 +1,31 @@
---- 
-spec_version: 1.0.0
-replaces: []
-
-loadpath: 
-- lib
-name: detroit-rubygems
-repositories: {}
-
+---
+authors:
+- name: T. Sawyer
+  email: transfire@gmail.com
+copyrights:
+- holder: Thomas Sawyer
+  year: '2011'
+  license: GPL-3
+replacements: []
 conflicts: []
-
-engine_check: []
-
-title: Detroit RubyGems
-contact: trans <transfire@gmail.com>
-resources: 
-  code: http://github.com/detroit/detroit-rubygems
+requirements: []
+dependencies: []
+repositories: []
+resources:
   home: http://detroit.github.com/
-maintainers: []
-
-requires: []
-
-version: 0.0.1
-licenses: []
-
-copyright: (c) 2011 Thomas Sawyer
-authors: 
-- Thomas Sawyer
-description: RubyGems plugin for Detroit build system.
-summary: RubyGems plugin for Detroit build system.
+  code: http://github.com/detroit/detroit-rubygems
+  mail: http://groups.google.com/groups/rubyworks-mailinglist
+load_path:
+- lib
+extra: {}
+revision: 0
+name: detroit-rubygems
+source: []
+alternatives: []
+title: Detroit RubyGems
+version: 0.1.0
+summary: RubyGems plugin for Detroit
+description: RubyGems plugin for Detroit build system. This plugin builds a gem during
+  the package phase and releases it to rubygems.org (or other gem source) during the
+  release phase.
+date: '2011-10-16'

@@ -1,16 +1,23 @@
 ---
-name : detroit-rubygems
-title: Detroit RubyGems
-
-contact: trans <transfire@gmail.com>
+name    : detroit-rubygems
+version : 0.1.0
+title   : Detroit RubyGems
+summary : RubyGems plugin for Detroit
 
 description:
   RubyGems plugin for Detroit build system.
+  This plugin builds a gem during the package
+  phase and releases it to rubygems.org
+  (or other gem source) during the release phase.
 
 resources:
   home: http://detroit.github.com/
   code: http://github.com/detroit/detroit-rubygems
+  mail: http://groups.google.com/groups/rubyworks-mailinglist
 
-copyright:
-  (c) 2011 Thomas Sawyer
+authors:
+  - T. Sawyer <transfire@gmail.com>
+
+copyrights:
+  - (c) 2011 Thomas Sawyer (GPL-3)
 
