@@ -27,8 +27,8 @@ for defining a Gem service.
 
 ## EXAMPLES
 
-Because the default options are all that is likely to be need the
-common example something like:
+Becuase the default options are all that is likely to be need the
+common exmaple something like:
 
     gem:
       active: true
@@ -62,4 +62,4 @@ Detroit RubyGems is distributable in accordance with the GPLv3 license.
 
 ## SEE ALSO
 
-detroit(1), gem(1)
+dnote(1), gem(1)
