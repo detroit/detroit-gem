@@ -7,13 +7,13 @@
 \fBdetroit\-gem\fR \- build gem package with detroit
 .
 .SH "DESCRIPTION"
-The Gem plug\-in for Detroit utilize the \fBgem\fR command line tool to build a \.gem package for a project during the standard \fBpackage\fR phase\.
+The Gem plug\-in for Detroit utilizes the \fBgem\fR command line tool to build a \fB\.gem\fR package for a project during the standard \fBpackage\fR phase\.
 .
 .SH "OPTIONS"
-The following options can be used in the Detroit assembly file for defining a dnote service\.
+The following options can be used in the Detroit assembly file for defining a Gem service\.
 .
 .IP "\(bu" 4
-\fBgemspec\fR \- The \.gemspec file\. The default looks for a \fB\.gemspec\fR or \fB{name}\.gemspec\fR file\.
+\fBgemspec\fR \- The \.gemspec file\. The default is the first \fB\.gemspec\fR file found\.
 .
 .IP "\(bu" 4
 \fBautospec\fR \- Setting this option to \fBtrue\fR will have the plug\-in create a gemspec using a project\'s metadata\. Default is \fBfalse\fR\.
@@ -57,6 +57,17 @@ A fuller example might look something like this\.
 .
 .P
 The above examples use the YAML\-base assembly format\. Assembly files can also be Ruby\-based\. See Detroit documentation for more details\.
+.
+.SH "RESOURCES"
+For more information:
+.
+.IP "\(bu" 4
+API Documentation \fIhttp://rubydoc\.info/gems/detroit\-rubygems\fR
+.
+.IP "\(bu" 4
+Development Site \fIhttp://github\.com/detroit/detroit\-rubygems\fR
+.
+.IP "" 0
 .
 .SH "COPYRIGHT"
 Copyright (c) 2010 Thomas Sawyer, Rubyworks
