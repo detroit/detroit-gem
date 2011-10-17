@@ -57,6 +57,7 @@
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#OPTIONS">OPTIONS</a>
     <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#RESOURCES">RESOURCES</a>
     <a href="#COPYRIGHT">COPYRIGHT</a>
     <a href="#SEE-ALSO">SEE ALSO</a>
     </div>
@@ -74,18 +75,18 @@
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
-<p>The Gem plug-in for Detroit utilize the <code>gem</code> command line tool
-to build a .gem package for a project during the standard <code>package</code>
+<p>The Gem plug-in for Detroit utilizes the <code>gem</code> command line tool
+to build a <code>.gem</code> package for a project during the standard <code>package</code>
 phase.</p>
 
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <p>The following options can be used in the Detroit assembly file
-for defining a dnote service.</p>
+for defining a Gem service.</p>
 
 <ul>
-<li><p><code>gemspec</code> - The .gemspec file. The default looks for a <code>.gemspec</code>
- or <code>{name}.gemspec</code> file.</p></li>
+<li><p><code>gemspec</code> - The .gemspec file. The default is the first <code>.gemspec</code>
+ file found.</p></li>
 <li><p><code>autospec</code> - Setting this option to <code>true</code> will have the plug-in
  create a gemspec using a project's metadata. Default is <code>false</code>.</p></li>
 <li><p><code>pkgdir</code> - Directory to save generated gem file. The default is <code>pkg/</code>.</p></li>
@@ -113,6 +114,16 @@ common exmaple something like:</p>
 <p>The above examples use the YAML-base assembly format. Assembly
 files can also be Ruby-based. See Detroit documentation for more
 details.</p>
+
+<h2 id="RESOURCES">RESOURCES</h2>
+
+<p>For more information:</p>
+
+<ul>
+<li><p><a href="http://rubydoc.info/gems/detroit-rubygems">API Documentation</a></p></li>
+<li><p><a href="http://github.com/detroit/detroit-rubygems">Development Site</a></p></li>
+</ul>
+
 
 <h2 id="COPYRIGHT">COPYRIGHT</h2>
 
