@@ -222,6 +222,13 @@ module Detroit
     #    raise LoadError, "RubyGems is not installed."
     # end
     #end
+
+  public
+
+    def self.man_page
+      File.dirname(__FILE__)+'/../man/detroit-gem.5'
+    end
+
   end
 
 end

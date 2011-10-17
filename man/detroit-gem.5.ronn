@@ -1,0 +1,56 @@
+detroit-gem(5) - build gem package with detroit
+=================================== ===========
+
+## DESCRIPTION
+
+The Gem plug-in for Detroit utilize the `gem` command line tool
+to build a .gem package for a project during the standard `package`
+phase.
+
+
+## OPTIONS
+
+The following options can be used in the Detroit assembly file
+for defining a dnote service.
+
+  * `gemspec` - The .gemspec file. The default looks for a `.gemspec`
+     or `{name}.gemspec` file.
+
+  * `autospec` - Setting this option to `true` will have the plug-in 
+     create a gemspec using a project's metadata. Default is `false`.
+
+  * `pkgdir` - Directory to save generated gem file. The default is `pkg/`.
+
+  * `install` - Should the gem be installed after being generated? Default
+     is `false`.
+
+
+## EXAMPLES
+
+Becuase the default options are all that is likely to be need the
+common exmaple something like:
+
+    gem:
+      active: true
+
+A fuller example might look something like this.
+
+     gem:
+       gemspec: myapp-extra.gemspec
+       install: true
+
+The above examples use the YAML-base assembly format. Assembly
+files can also be Ruby-based. See Detroit documentation for more
+details.
+
+
+## COPYRIGHT
+
+Copyright (c) 2010 Thomas Sawyer, Rubyworks
+
+Detroit RubyGems is distributable in accordance with the GPLv3 license.
+
+
+## SEE ALSO
+
+dnote(1), gem(1)
