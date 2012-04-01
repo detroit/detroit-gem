@@ -1,0 +1,1 @@
+The Gem plugin for the Detroit build system will build a gem during the package phase and releases it to rubygems.org (or other gem source) during the release phase.
