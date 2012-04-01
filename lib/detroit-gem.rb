@@ -38,31 +38,28 @@ module Detroit
     #attr :options
 
 
-    #  A S S E M B L Y  S T A T I O N S
+    #  A S S E M B L Y
 
-    # Attach package method to package assembly station.
-    def station_package
-      package
+    #
+    def assemble?(station, options={})
+      case station
+      when :install then install?
+      when :package then true
+      when :release then true
+      when :reset   then true
+      when :purge   then true
+      end
     end
 
-    # Attach install method to install assembly station.
-    def station_install
-      install
-    end
-
-    # Attach release method to release assembly station.
-    def station_release
-      release
-    end
-
-    # Attach reset method to reset assembly station.
-    def station_reset
-      rest
-    end
-
-    # Attach purge method to purge assembly station.
-    def station_purge
-      purge
+    # Attach to `package`, `install` and `release`, `reset` and `purge`.
+    def assemble(station, options={})
+      case station
+      when :package then package
+      when :install then install
+      when :release then release
+      when :reset   then reset
+      when :purge   then purge
+      end
     end
 
 
@@ -70,7 +67,7 @@ module Detroit
 
     # Write gemspec if +autospec+ is +true+ and then build the gem.
     def package
-      create_gemspec if autospec
+      create_gemspec if autospec   # TODO: should autospec be a generate phase?
       build
     end
 
@@ -101,10 +98,9 @@ module Detroit
       end
     end   
 
+    # TODO: Gem push programatically instead of shelling out.
+
     # Push gem package to RubyGems.org (a la Gemcutter).
-    #--
-    # TODO: Do this programatically instead of shelling out.
-    #++
     def push
       if package_files.empty?
         report "No .gem packages found for version {version} at #{pkgdir}."
