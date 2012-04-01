@@ -1,21 +1,27 @@
-= Detroit RubyGems Tool
+= Detroit Gem Tool
+
+{Website}[http://rubyworks.github.com/detroit-gem] /
+{Report Issue}[http://github.com/rubyworks/detroit-gem/issues] /
+{Repository}[http://github.com/rubyworks/detroit-gem]
 
 
-== DESCRIPTION
+== Description
 
 Create `.gem` package for your Ruby project.
 
 
-== INSTALL
+== Installation
+
+Per the usual gem install process:
 
   $ gem install detroit-rubygems
 
 
-== COPYRIGHTS
+== Copyrights
 
 Copyright (c) 2011 Thomas Sawyer
 
-Detroit RubyGems is licensed via the terms of the GPL v3.
+Detroit Gem is licensed via the terms of the GPL version 3 or greater.
 
-See GPL3.txt file for details.
+See COPYING.rdoc and LICENSE.txt files for details.
 
