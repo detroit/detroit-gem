@@ -9,8 +9,9 @@ copyrights:
   year: '2011'
   license: GPL-3
 requirements:
-- name: rubygems
 - name: detroit
+  version: 0.3.0+
+- name: rubygems
 dependencies: []
 alternatives: []
 conflicts: []
