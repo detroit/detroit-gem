@@ -32,8 +32,7 @@ module Detroit
     #
     def prerequisite
       require 'rubygems'
-      # can't do this b/c options not set yet
-      #require 'gemdo/gemspec' if autospec
+      require 'rubygems/package'
     end
 
     # The .gemspec filename (default looks-up `.gemspec` or `name.gemspec` file).
@@ -64,7 +63,7 @@ module Detroit
     #attr :options
 
     # Write gemspec if +autospec+ is +true+ and then build the gem.
-    def package!
+    def package
       create_gemspec if autospec   # TODO: should autospec be a generate phase?
       build
     end
@@ -72,10 +71,9 @@ module Detroit
     # Create a gem package.
     def build
       trace "gem build #{gemspec}"
-      spec    = load_gemspec
-      builder = ::Gem::Builder.new(spec)
-      package = builder.build
-      mkdir_p(pkgdir)
+      spec = load_gemspec
+      package = ::Gem::Package.build(spec)
+      mkdir_p(pkgdir) unless File.directory?(pkgdir)
       mv(package, pkgdir)
     end
 
@@ -153,7 +151,7 @@ module Detroit
 
       @autospec  = false
 
-      @pkgdir  ||= project.pkg
+      @pkgdir  ||= (root + 'pkg').to_s #|| project.pkg
       @gemspec ||= lookup_gemspec
 
       @version = project.metadata.version
@@ -172,7 +170,7 @@ module Detroit
     # Create a gemspec file from project metadata.
     def create_gemspec(file=nil)
       file = gemspec if !file
-      require 'gemdo/gemspec'
+      #require 'gemdo/gemspec'
       yaml = project.to_gemspec.to_yaml
       File.open(file, 'w') do |f|
         f << yaml
