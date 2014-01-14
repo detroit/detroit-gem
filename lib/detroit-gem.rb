@@ -1,14 +1,40 @@
-require 'detroit/tool'
+require 'detroit-standard'
 
 module Detroit
 
-  # Create new Gem tool with the specified +options+.
-  def Gem(options={})
-    Gem.new(options)
-  end
-
-  # The Gem tool is used to generate gemspec and gem packages.
+  # The Gem tool is used to generate gemspec and gem packages
+  # for ruby projects.
+  #
+  # This tool was designed for the standard toolchain supporting
+  # the following stations:
+  #
+  # * package
+	# * install
+	# * release
+	#	* reset
+  # * purge
+  # 
   class Gem < Tool
+
+    # Designed for the Standard assembly.
+    #
+    # @!parse
+    #   include Standard
+    #
+    assembly Standard
+
+    # RubyGems is a tool for packaging Ruby projects.
+    include RubyUtils
+
+    # Location of man_page for tool.
+    MANPAGE = File.dirname(__FILE__) + '/../man/detroit-gem.5'
+
+    #
+    def prerequisite
+      require 'rubygems'
+      # can't do this b/c options not set yet
+      #require 'gemdo/gemspec' if autospec
+    end
 
     # The .gemspec filename (default looks-up `.gemspec` or `name.gemspec` file).
     attr_accessor :gemspec
@@ -37,36 +63,8 @@ module Detroit
     # Additional options to pass to gem command.
     #attr :options
 
-
-    #  A S S E M B L Y
-
-    #
-    def assemble?(station, options={})
-      case station
-      when :install then install?
-      when :package then true
-      when :release then true
-      when :reset   then true
-      when :purge   then true
-      end
-    end
-
-    # Attach to `package`, `install` and `release`, `reset` and `purge`.
-    def assemble(station, options={})
-      case station
-      when :package then package
-      when :install then install
-      when :release then release
-      when :reset   then reset
-      when :purge   then purge
-      end
-    end
-
-
-    #  S E R V I C E  M E T H O D S
-
     # Write gemspec if +autospec+ is +true+ and then build the gem.
-    def package
+    def package!
       create_gemspec if autospec   # TODO: should autospec be a generate phase?
       build
     end
@@ -83,9 +81,10 @@ module Detroit
 
     # Convert metadata to a gemspec and write to +file+.
     #
-    # file - name of gemspec file (defaults to value of #gemspec).
+    # @param [String] file
+    #   Name of gemspec file (defaults to value of #gemspec).
     #
-    # Returns [String] file name.
+    # @return [String] The file name.
     def spec(file=nil)
       create_gemspec(file)
     end
@@ -96,7 +95,7 @@ module Detroit
       package_files.each do |file|
         sh "gem install --no-rdoc --no-ri #{file}"
       end
-    end   
+    end
 
     # TODO: Gem push programatically instead of shelling out.
 
@@ -111,8 +110,10 @@ module Detroit
       end
     end
 
-    #
-    alias_method :release, :push
+    # Same as #push.
+    def release
+      push
+    end
 
     # Mark package files as outdated.
     def reset
@@ -123,10 +124,10 @@ module Detroit
     end
 
     # Remove package file(s).
-    #--
-    # TODO: This is a little loose. Can we be more specific about which
-    # gem file(s) to remove?
-    #++
+    #
+    # @todo This code is a little loose. Can it be more specific about which
+    #       gem file(s) to remove?
+    #
     def purge
       package_files.each do |f|
         rm(f)
@@ -134,10 +135,22 @@ module Detroit
       end
     end
 
+    #
+    def assemble?(station, options={})
+      return true if station == :package
+      return true if station == :install
+      return true if station == :release
+      return true if station == :reset
+      return true if station == :purge
+      return false
+    end
+
   private
 
-    #
+    # Initialize attribute defaults.
     def initialize_defaults
+      super
+
       @autospec  = false
 
       @pkgdir  ||= project.pkg
@@ -159,7 +172,7 @@ module Detroit
     # Create a gemspec file from project metadata.
     def create_gemspec(file=nil)
       file = gemspec if !file
-      require 'pom/gemspec'
+      require 'gemdo/gemspec'
       yaml = project.to_gemspec.to_yaml
       File.open(file, 'w') do |f|
         f << yaml
@@ -198,17 +211,6 @@ module Detroit
       line.index "!ruby/object:Gem::Specification"
     end
 
-    # TODO: Should we be rescuing this?
-    def initialize_requires
-      begin
-        require 'rubygems'
-      rescue LoadError
-        $stderr.puts "Could not load `rubygems'."
-      end
-      # can't do this b/c options not set yet
-      #require 'pom/gemspec' if autospec
-    end
-
     ## Require rubygems library
     #def require_rubygems
     #  begin
@@ -218,12 +220,6 @@ module Detroit
     #    raise LoadError, "RubyGems is not installed."
     # end
     #end
-
-  public
-
-    def self.man_page
-      File.dirname(__FILE__)+'/../man/detroit-gem.5'
-    end
 
   end
 

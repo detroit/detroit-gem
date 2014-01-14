@@ -10,8 +10,8 @@ phase.
 
 ## OPTIONS
 
-The following options can be used in the Detroit assembly file
-for defining a Gem service.
+The following options can be used in the Detroit toolchain file
+for defining a Gem tool instance.
 
   * `gemspec` - The .gemspec file. The default is the first `.gemspec`
      file found.
@@ -39,7 +39,7 @@ A fuller example might look something like this.
        gemspec: myapp-extra.gemspec
        install: true
 
-The above examples use the YAML-base assembly format. Assembly
+The above examples use the YAML-based toolchain format. Toolchain
 files can also be Ruby-based. See Detroit documentation for more
 details.
 
@@ -55,7 +55,7 @@ For more information:
 
 ## COPYRIGHT
 
-Copyright (c) 2010 Thomas Sawyer, Rubyworks
+Copyright (c) 2010 Rubyworks
 
 Detroit RubyGems is distributable in accordance with the GPLv3 license.
 

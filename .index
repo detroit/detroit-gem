@@ -1,0 +1,46 @@
+---
+revision: 2013
+type: ruby
+sources:
+- var
+authors:
+- name: T. Sawyer
+  email: transfire@gmail.com
+organizations:
+- name: rubyworks
+requirements:
+- version: 0.4+
+  name: detroit
+- name: detroit-standard
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: http://detroit.github.com/
+  label: Homepage
+- type: code
+  uri: http://github.com/detroit/detroit-rubygems
+  label: Source Code
+- type: mail
+  uri: http://groups.google.com/groups/rubyworks-mailinglist
+  label: Mailing List
+repositories: []
+categories: []
+copyrights:
+- holder: Rubyworks
+  year: '2011'
+  license: GPL-3.0
+customs: []
+paths:
+  lib:
+  - lib
+name: detroit-gem
+title: Detroit Gem
+summary: Gem plugin for Detroit
+created: '2011-10-16'
+description: The Gem plugin for the Detroit build system will build a gem during the
+  package phase and releases it to rubygems.org (or other gem source) during the release
+  phase.
+suite: detroit
+version: 0.4.0
+date: '2014-01-13'

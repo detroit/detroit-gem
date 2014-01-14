@@ -4,14 +4,14 @@ gem:
 
 qedoc:
   active: false
-  files : qed/
+  files : demo/
   title : Detroit
-  output: QED.rdoc
+  output: QED.md
 
 yard:
   active   : true
-  readme   : [ "README.rdoc" ]
-  topfiles : [ "[A-Z][A-Z]*" ]
+  readme   : [ "README.md" ]
+  topfiles : [ "*.md", "*,txt" ]
   files    : [ lib ]
   exclude  : [ lib/detroit.yml ]
   output   : doc
@@ -19,7 +19,7 @@ yard:
   priority : 1
 
 dnote:
-  title : Developer's Notes
+  title : Source Notes
   output: log/NOTES.rdoc
 
 locat:
@@ -29,7 +29,7 @@ github:
   folder: web
 
 announce:
-  service: email
+  tool: email
   mailto : 
     - ruby-talk@ruby-lang.org
     - rubyworks-mailinglist@googlegroups.com
